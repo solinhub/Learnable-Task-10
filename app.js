@@ -4,7 +4,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const connectDB = require('./db');
 const { createRoomType, getAllRoomTypes } = require('./controllers/room-type');
 const {
 	createRoom,
