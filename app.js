@@ -4,16 +4,22 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const connectDB = require('./db');
+const { createRoomType, getAllRoomTypes } = require('./controllers/room-type');
+const {
+	createRoom,
+	getAllRooms,
+	getRoomById,
+	updateRoom,
+	deleteRoom,
+} = require('./controllers/room');
 
 dotenv.config();
 
-// MongoDB connection function
+// MongoDB connection
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.MONGODB_URI, {});
         console.log('MongoDB connected');
     } catch (err) {
         console.error(err.message);
